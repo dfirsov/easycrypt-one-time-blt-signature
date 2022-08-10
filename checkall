@@ -1,0 +1,49 @@
+#!/bin/bash
+
+timeout=30
+
+check() {
+  echo checking $1;
+  if easycrypt -I . -timeout $timeout $1;
+  then echo passed: $1;
+       echo "";
+  else echo failed: $1;
+       echo "";
+       echo "skipping remaining scripts";
+       exit 1;
+  fi;
+}
+
+check BLT_ReadWrite_Hashed_Set/BLT.ec
+check BLT_ReadWrite_Hashed_Set/BLT_Instance.ec
+check BLT_ReadWrite_Hashed_Set/Case1.ec
+check BLT_ReadWrite_Hashed_Set/Case2.ec
+check BLT_ReadWrite_Hashed_Set/Case3_A1_A2_A3.ec
+check BLT_ReadWrite_Hashed_Set/Case3_A1.ec
+check BLT_ReadWrite_Hashed_Set/Case3_A2.ec
+check BLT_ReadWrite_Hashed_Set/Case3_A3.ec
+check BLT_ReadWrite_Hashed_Set/Case4.ec
+check BLT_ReadWrite_Hashed_Set/Dummy_Tag.ec
+check BLT_ReadWrite_Hashed_Set/RandomnessOracle.ec
+check BLT_ReadWrite_Hashed_Set/Security.ec
+check BLT_ReadWrite_Hashed_Set/TagSystem.ec
+check BLT_ReadWrite_Hashed_Set/Timestamp.ec
+
+check BLT_ReadOnly_Hashed/Security.ec
+
+check BLT_ReadWrite_Hashed/Case1.ec
+check BLT_ReadWrite_Hashed/Case2.ec
+check BLT_ReadWrite_Hashed/Case3.ec
+check BLT_ReadWrite_Hashed/Case4.ec
+check BLT_ReadWrite_Hashed/Dummy_Tag.ec
+check BLT_ReadWrite_Hashed/Pure_Wrap.ec
+check BLT_ReadWrite_Hashed/Security.ec
+
+check BLT_ReadWrite_Plain/Case1.ec
+check BLT_ReadWrite_Plain/Case2.ec
+check BLT_ReadWrite_Plain/Case3.ec
+check BLT_ReadWrite_Plain/Case4.ec
+check BLT_ReadWrite_Plain/Dummy_Tag.ec
+check BLT_ReadWrite_Plain/Properties.ec
+check BLT_ReadWrite_Plain/Pure_Wrap.ec
+check BLT_ReadWrite_Plain/Security.ec

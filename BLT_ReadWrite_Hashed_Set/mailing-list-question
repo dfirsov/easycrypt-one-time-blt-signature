@@ -1,0 +1,32 @@
+
+Dear All,
+
+I want to prove a security of a particular digital signature scheme. To accomplish this I must convert an adversary A into adversaries A1 and A2; very roughly my statement looks as follows:
+
+Pr[ A.forge() : success ] <= Pr [ a <- A1.prepare() ; A2.forge(a) : success ]
+
+
+The problem is that A has only one method A.forge which must be executed once by A1 and once by A2. Since A can be stateful and probabilistic then results of two sequential runs of A.forge might give different results. Are there any standard techniques to handle situations when adversary must be split and run multiple times (so that different runs perform the same computation)?
+
+My idea about how to approach this problem is as follows:
+
+1/ Assume that adversary A is fully deterministic and all its randomness is coming from the outside oracle RO.
+
+2/ Since adversary is deterministic then assume that its computations can be performed by some pure function, given all the "random" inputs:
+
+  op f : int -> int.
+  axiom a2  : phoare [ A(RO).forge : true ==> res = f RO.randomString ]  = 1%r.
+
+3/ Aassume that adversary A can be copied into adversary A'
+
+  declare module A' : Adv{RO}.
+
+  axiom a1  : equiv  [ A'(RO).forge ~ A(RO).forge : true ==> ={res} ] .
+
+4/ Convert A into A1, convert A' into A2.
+
+
+I will be happy to get a feedback about this approach.
+
+Best regards,
+Denis

@@ -1,0 +1,20 @@
++ get rid of admits.
++ preconditions of phoare into phoare
++ rnd keys
++ rnd initial time
+
++ A, A', A'' => A'', A', A
++ Q: provide RandomnessOracle or just a rndStr itself to Advs [talk with Ahto T.]
+  A: str is ok
+
++ put it all together
+
++ Q: Tag_Wrap_* => Tag_Wrap.init()?
+  A: bad idea, adversaries will be "touching" Tag_Wrap vars.
+
++ tagVerify t tg = true => tg = tag sk t
+
+
++ message, "" => "option message"
+HMT.H(EMPTY, tg) = HT.H(tg)
+ 

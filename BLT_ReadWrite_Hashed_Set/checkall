@@ -1,0 +1,33 @@
+#!/bin/bash
+
+timeout=30
+
+check() {
+  echo checking $1;
+  if easycrypt -I . -timeout $timeout $1;
+  then echo passed: $1;
+       echo "";
+  else echo failed: $1;
+       echo "";
+       echo "skipping remaining scripts";
+  exit 1;
+  fi;
+}
+
+
+check BLT.ec
+check BLT_Instance.ec
+check Case1.ec
+check Case2.ec
+check Case3_A1_A2_A3.ec
+check Case3_A1.ec
+check Case3_A2.ec
+check Case3_A3.ec
+check Case4.ec
+check Dummy_Tag.ec
+check HashFunc.ec
+check RandomnessOracle.ec
+check Security.ec
+check SHGame.ec
+check TagSystem.ec
+check Timestamp.ec
